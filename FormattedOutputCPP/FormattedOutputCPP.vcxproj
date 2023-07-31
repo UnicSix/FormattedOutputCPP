@@ -155,7 +155,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="FormatOutput.h" />
-    <ClCompile Include="IncludePyHeader.cpp" />
+    <ClCompile Include="Main" />
     <ClInclude Include="GenerateOutput.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

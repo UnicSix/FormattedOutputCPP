@@ -11,7 +11,8 @@ void ReadFile()
 {
     int line_index=0;
     string target = ", ";
-    string file_dir = "@AutomationLog.txt";
+    // string file_dir = "@AutomationLog.txt";
+    string file_dir = "listbox.txt";
     string readline;
     string outputLines="";
     string test_str = "ControlType: PaneControl    ClassName: #32769    AutomationId:     Rect: (0,0,1920,1080)[1920x1080]    Name: '桌面 1'    Handle: 0x10010(65552)    Depth: 0    SupportedPattern: LegacyIAccessiblePattern";
@@ -29,23 +30,31 @@ void ReadFile()
             smatch value_match;
             if(regex_search(readline, rect_match, rect_pattern))
             {
+                line_index++;
+                outputLines+=to_string(line_index);
+                outputLines+="@";
                 outputLines+=rect_match[2];
-            }
-            if(regex_search(readline, name_match, name_pattern))
-            {
-                outputLines += name_match[2];
             }
             if(regex_search(readline, value_match, value_pattern))
             {
                 outputLines += value_match[2];
             }
-            // replace(outputLines.begin(), outputLines.end(), ',', 'ඞ');
-            Replace_all(outputLines, ",", " ");
+            else
+            {
+                if(regex_search(readline, name_match, name_pattern))
+                {
+                    outputLines += name_match[2];
+                }
+            }
+            Replace_all(outputLines, ",", "@");
+            Replace_all(outputLines, "'", "@");
             if(outputLines != "")
+            {
+                outputLines.pop_back();
                 outputFile << outputLines << endl;
+            }
             outputLines = "";
         }
-        // ඞ
     }
     else
     {

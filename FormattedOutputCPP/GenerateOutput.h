@@ -3,6 +3,6 @@
 
 void ExeAutomation()
 {
-    // system("automation.py > @Automation.txt");
-    system("automation.py");
+    system("automation.py > @Automation.txt");
+    // system("automation.py");
 }
