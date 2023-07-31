@@ -11,8 +11,8 @@ void ReadFile()
 {
     int line_index=0;
     string target = ", ";
-    // string file_dir = "@AutomationLog.txt";
-    string file_dir = "listbox.txt";
+    string file_dir = "@AutomationLog.txt";
+    // string file_dir = "listbox.txt";
     string readline;
     string outputLines="";
     string test_str = "ControlType: PaneControl    ClassName: #32769    AutomationId:     Rect: (0,0,1920,1080)[1920x1080]    Name: '桌面 1'    Handle: 0x10010(65552)    Depth: 0    SupportedPattern: LegacyIAccessiblePattern";
