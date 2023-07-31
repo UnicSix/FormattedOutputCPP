@@ -11,8 +11,9 @@ void ReadFile()
 {
     int line_index=0;
     string target = ", ";
-    string file_dir = "@AutomationLog.txt";
-    // string file_dir = "listbox.txt";
+    // string file_dir = "@AutomationLog.txt";
+    // string file_dir = "datagridview.txt";
+    string file_dir = "listbox.txt";
     string readline;
     string outputLines="";
     string test_str = "ControlType: PaneControl    ClassName: #32769    AutomationId:     Rect: (0,0,1920,1080)[1920x1080]    Name: '桌面 1'    Handle: 0x10010(65552)    Depth: 0    SupportedPattern: LegacyIAccessiblePattern";
@@ -20,7 +21,7 @@ void ReadFile()
     ofstream outputFile("outputFile.txt", 'w');
     regex rect_pattern("(Rect: )\\(((-*\\d+,){3}-*\\d+)\\)");
     regex name_pattern("(Name: )('([^']*)')");
-    regex value_pattern("(ValuePattern.Value: )('([^']*)')");
+    regex value_pattern("(ValuePattern.Value: )'([^']*)'");
     if(inputFile.is_open())
     {
         while(getline(inputFile, readline))
@@ -37,13 +38,13 @@ void ReadFile()
             }
             if(regex_search(readline, value_match, value_pattern))
             {
-                outputLines += value_match[2];
+                outputLines += value_match[0];
             }
             else
             {
                 if(regex_search(readline, name_match, name_pattern))
                 {
-                    outputLines += name_match[2];
+                    outputLines += name_match[0];
                 }
             }
             Replace_all(outputLines, ",", "@");
