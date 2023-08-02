@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <algorithm>
 #include <string.h>
 #include <string>
@@ -11,19 +11,19 @@ void ReadFile()
 {
     int line_index=0;
     string target = ", ";
-    string file_dir = "@Automation.txt";
+    string file_dir = "@AutomationLog.txt";
     // string file_dir = "datagridview.txt";
     // string file_dir = "listbox.txt";
     string readline;
     string outputLines="";
-    string test_str = "ControlType: PaneControl    ClassName: #32769    AutomationId:     Rect: (0,0,1920,1080)[1920x1080]    Name: '桌面 1'    Handle: 0x10010(65552)    Depth: 0    SupportedPattern: LegacyIAccessiblePattern";
+    string test_str = "ControlType: PaneControl    ClassName: #32769    AutomationId:     Rect: (0,0,1920,1080)[1920x1080]    Name: '�ୱ 1'    Handle: 0x10010(65552)    Depth: 0    SupportedPattern: LegacyIAccessiblePattern";
     ifstream inputFile(file_dir);
     ofstream outputFile("outputFile.txt", 'w');
     regex rect_pattern("(Rect: )\\(((-*\\d+,){3}-*\\d+)\\)");
     regex name_pattern("(Name: )('([^']*)')");
     regex value_pattern("(ValuePattern.Value: )('([^']*)')");
-    regex pass_pattern("CustomControl|HeaderControl|MenuBarControl|MenuItemControl|ButtonControl");
-    // regex pass_pattern("資料列|CustomControl");
+    regex pass_pattern("CustomControl|MenuBarControl|MenuItemControl|ButtonControl|ListControl");
+    // regex pass_pattern("��ƦC|CustomControl");
     if(inputFile.is_open())
     {
         while(getline(inputFile, readline))

@@ -4,8 +4,8 @@
 
 void ExeAutomation()
 {
-    ofstream clearFile("@Automation.txt", 'w');
+    ofstream clearFile("@AutomationLog.txt", 'w');
     clearFile.close();
-    system("automation.py > @Automation.txt");
-    // system("automation.py");
+    // system("automation.py > @Automation.txt");
+    system("automation.py");
 }
